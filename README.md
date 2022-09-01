@@ -46,11 +46,6 @@
 ## Gallery:
 - Check out the sample pics here [gallyery.md](docs/gallery.md)
 
-## Sample Bots:
-Below are the sample bot projects that were developed using Rasa and made to work with this widget
-- [Restaurant Search Bot](https://github.com/JiteshGaikwad/Restaurant-Search-Bot.git)
-- [HR Bot](https://github.com/JiteshGaikwad/HR_Bot)
-
 ## Library used:
 - [Materialize CSS](https://materializecss.com) for CSS
 - [Showdownjs](https://github.com/showdownjs/showdown) for Markdown suppport
