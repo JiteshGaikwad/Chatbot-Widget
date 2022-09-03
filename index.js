@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./src/index.css";
-import App from "./src/App";
+import { Widget } from "./src/Widget";
+
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props, element = null) => {
@@ -14,7 +14,7 @@ export default (props, element = null) => {
     }
     const mountElement = element || document.getElementById("rasaWidget");
     const root = createRoot(mountElement);
-    root.render(<App />);
+    root.render(<Widget {...props} />);
   };
 
   if (document.readyState === "complete") {

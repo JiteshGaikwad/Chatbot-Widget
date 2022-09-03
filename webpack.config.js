@@ -1,6 +1,6 @@
 const path = require("path");
 // const HtmlWebPackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
   entry: ["regenerator-runtime/runtime.js", "./index.js"],
   mode: "development",
@@ -12,6 +12,9 @@ module.exports = {
   },
   optimization: {
     minimizer: [new TerserPlugin({ extractComments: false })],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
@@ -27,7 +30,6 @@ module.exports = {
             ],
           },
         },
-        
       },
       {
         test: /\.css$/i,
