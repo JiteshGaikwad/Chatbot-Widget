@@ -1,14 +1,17 @@
 const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-
+// const HtmlWebPackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
-  entry: ["regenerator-runtime/runtime.js", "/src/index.js"],
-  mode: 'development',
+  entry: ["regenerator-runtime/runtime.js", "./index.js"],
+  mode: "development",
   output: {
-    // path: path.resolve(__dirname, "dist"),
-    path: path.join(__dirname, "/lib"),
+    path: path.join(__dirname, "/dist"),
     filename: "index.js",
-    library: "Widget",
+    library: "ChatbotWidget",
+    libraryTarget: "umd",
+  },
+  optimization: {
+    minimizer: [new TerserPlugin({ extractComments: false })],
   },
   module: {
     rules: [
@@ -24,10 +27,11 @@ module.exports = {
             ],
           },
         },
+        
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader","postcss-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -35,9 +39,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
+  plugins: [],
 };
