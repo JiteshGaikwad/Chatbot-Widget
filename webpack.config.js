@@ -1,6 +1,7 @@
 const path = require("path");
 // const HtmlWebPackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const {BundleAnalyzerPlugin} = require("webpack-bundle-analyzer");
 module.exports = {
   entry: ["regenerator-runtime/runtime.js", "./index.js"],
   mode: "development",
@@ -13,6 +14,7 @@ module.exports = {
   optimization: {
     minimizer: [new TerserPlugin({ extractComments: false })],
   },
+  
   resolve: {
     extensions: [".js", ".jsx"],
   },
@@ -34,12 +36,21 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader", "postcss-loader"],
+        
+      },
+      {
+        test: /\.(jpg|png|gif|svg|woff|ttf|eot)$/,
+        use: {
+          loader: 'url-loader'
+        }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
-      },
+      }
     ],
   },
-  plugins: [],
+  plugins: [
+    new BundleAnalyzerPlugin(),
+  ],
 };

@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  widgetConnected: false,
   toggleWidget: false,
   userId: null,
 };

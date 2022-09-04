@@ -5,7 +5,6 @@ import { Widget } from "./src/Widget";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props, element = null) => {
-  console.log("loading chatbot widget...");
   const load = () => {
     if (element === null) {
       const node = document.createElement("div");
