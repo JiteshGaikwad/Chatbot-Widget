@@ -6,8 +6,8 @@ import ThemeContext from "../../ThemeContext";
 const Textarea = styled.textarea`
   -ms-overflow-style: none;
   scrollbar-width: none;
-  ::-webkit-scrollbar {
-    display: "none";
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 
