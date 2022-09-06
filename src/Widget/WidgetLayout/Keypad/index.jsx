@@ -1,5 +1,6 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ThemeContext from "../../ThemeContext";
 
@@ -13,20 +14,49 @@ const Textarea = styled.textarea`
 
 export const Keypad = () => {
   const theme = useContext(ThemeContext);
+  const [userInput, setUserInput] = useState("");
+  const userTypingPlaceholder = useSelector(
+    (state) => state.messageState.userTypingPlaceholder
+  );
+
+  const userTyping = useSelector((state) => state.messageState.userTyping);
   const { widgetColor } = theme;
+
+  const handleSubmit = async () => {
+    if (userInput.length > 0) {
+      setUserInput("");
+    }
+  };
+
   return (
     <div className="mt-auto flex  h-[12%] items-center  rounded-t-3xl rounded-b-[2rem]  bg-slate-50">
       <Textarea
         rows="1"
-        className={` mx-4 block w-full  resize-none bg-slate-50 p-2.5  text-gray-900 outline-none`}
-        placeholder="Type your message..."
+        className={` mx-4 block w-full  resize-none bg-slate-50 p-2.5  text-gray-900 outline-none ${
+          userTyping ? "cursor-default" : "cursor-not-allowed"
+        }`}
+        placeholder={userTypingPlaceholder}
+        value={userInput}
+        onChange={(e) => {
+          setUserInput(e.target.value);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            handleSubmit();
+          }
+        }}
+        readOnly={!userTyping}
       />
       <button
         type="submit"
-        className={` inline-flex justify-center rounded-full  p-2 hover:bg-slate-100 `}
+        className={`${
+          userInput.trim().length > 1 ? "cursor-default" : "cursor-not-allowed"
+        } inline-flex justify-center rounded-full  p-2 hover:bg-slate-100 `}
         style={{ color: widgetColor }}
         onClick={(e) => {
           e.preventDefault();
+          handleSubmit();
         }}
       >
         <PaperAirplaneIcon className="h-6 w-6 -rotate-45 stroke-[1.1px]" />
