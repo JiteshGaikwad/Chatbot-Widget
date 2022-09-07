@@ -15,6 +15,7 @@ export const Widget = (props) => {
     widgetColor,
     botTitle,
     botSubTitle,
+    userId,
   } = props;
   return (
     <Provider store={store}>
@@ -22,6 +23,7 @@ export const Widget = (props) => {
         <ThemeContext.Provider
           value={{
             rasaServerUrl,
+            userId,
             initialPayload,
             metadata,
             botAvatar,
@@ -40,6 +42,7 @@ export const Widget = (props) => {
 Widget.prototype = {
   rasaServerUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   initialPayload: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  userId: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   metadata: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
   botAvatar: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   widgetColor: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
@@ -49,6 +52,7 @@ Widget.prototype = {
 
 Widget.defaultProps = {
   rasaServerUrl: "http://localhost:500/webhooks/rest/webhook",
+  userId: "testUser",
   initialPayload: "/greet",
   metadata: {},
   botAvatar:

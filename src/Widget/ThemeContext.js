@@ -8,6 +8,7 @@ const ThemeContext = createContext({
   widgetColor: "",
   botTitle: "",
   botSubTitle: "",
+  userId:"",
 });
 
 export default ThemeContext;

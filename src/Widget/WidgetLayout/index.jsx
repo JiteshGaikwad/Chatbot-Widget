@@ -1,11 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useSelector } from "react-redux";
+import { nanoid } from "nanoid";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserId } from "../widgetSlice";
 import { Header } from "./Header";
 import { Keypad } from "./Keypad";
 import { Launcher } from "./Launcher";
 import { Messages } from "./Messages";
-export const WidgetLayout = () => {
+export const WidgetLayout = ({userId}) => {
+  const dispatch = useDispatch();
   let toggleWidget = useSelector((state) => state.widgetState.toggleWidget);
+
   return (
     <AnimatePresence>
       {toggleWidget && (

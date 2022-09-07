@@ -2,7 +2,14 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { createUserMessage } from "../../../utils/helpers";
 import ThemeContext from "../../ThemeContext";
+import {
+  addMessage,
+  fetchBotResponse,
+  toggleBotTyping,
+  toggleUserTyping,
+} from "../Messages/messageSlice";
 
 const Textarea = styled.textarea`
   -ms-overflow-style: none;
@@ -13,6 +20,7 @@ const Textarea = styled.textarea`
 `;
 
 export const Keypad = () => {
+  const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
   const [userInput, setUserInput] = useState("");
   const userTypingPlaceholder = useSelector(
@@ -20,11 +28,22 @@ export const Keypad = () => {
   );
 
   const userTyping = useSelector((state) => state.messageState.userTyping);
-  const { widgetColor } = theme;
+  const { widgetColor, rasaServerUrl, userId } = theme;
 
   const handleSubmit = async () => {
     if (userInput.length > 0) {
+      dispatch(addMessage(createUserMessage(userInput.trim())));
       setUserInput("");
+      dispatch(toggleUserTyping(false));
+      dispatch(toggleBotTyping(true));
+      // dispatch(
+      //   fetchBotResponse({
+      //     rasaServerUrl,
+      //     message: userInput.trim(),
+      //     sender: userId,
+      //   })
+      // );
+      // sendMessage(userInput.trim());
     }
   };
 
