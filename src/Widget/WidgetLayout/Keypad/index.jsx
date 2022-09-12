@@ -34,15 +34,15 @@ export const Keypad = () => {
     if (userInput.length > 0) {
       dispatch(addMessage(createUserMessage(userInput.trim())));
       setUserInput("");
-      dispatch(toggleUserTyping(false));
-      dispatch(toggleBotTyping(true));
-      // dispatch(
-      //   fetchBotResponse({
-      //     rasaServerUrl,
-      //     message: userInput.trim(),
-      //     sender: userId,
-      //   })
-      // );
+      // dispatch(toggleUserTyping(false));
+      // dispatch(toggleBotTyping(true));
+      dispatch(
+        fetchBotResponse({
+          rasaServerUrl,
+          message: userInput.trim(),
+          sender: userId,
+        })
+      );
       // sendMessage(userInput.trim());
     }
   };

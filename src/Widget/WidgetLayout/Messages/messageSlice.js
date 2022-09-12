@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getBotResponse } from "../../../utils/helpers";
 
-
 export const fetchBotResponse = createAsyncThunk(
   "messages/fetchBotResponse",
   async (payload, thunkAPI) => {
@@ -66,20 +65,56 @@ export const messagesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBotResponse.fulfilled, (state, action) => {
-      if (action.payload.length > 0) {
-        action.payload.map((item) => {
+      const messages = action.payload;
+      for (let index = 0; index < messages.length; index++) {
+        const message = messages[index];
+        // messageType: text
+        if (message?.text) {
           state.messages.push({
-            ...item,
-            ...{ sender: "BOT", ts: new Date() },
+            text: message.text,
+            sender: "BOT",
+            messageType: "text",
+            ts: new Date(),
           });
-          return false;
-        });
-        state.botTyping = false;
-        state.userTyping = true;
-        state.userTypingPlaceholder = "Your message here";
+        }
+
+           // messageType: image
+        if (message?.image) {
+          state.messages.push({
+            src: message.image,
+            sender: "BOT",
+            messageType: "text",
+            ts: new Date(),
+          });
+        }
+
+           // messageType: buttons
+        if (message?.buttons) {
+          if (message.buttons.length > 0) {
+            state.messages.push({
+              buttons: message.buttons,
+              sender: "BOT",
+              messageType: "text",
+              ts: new Date(),
+            });
+          }
+        }
       }
+
+      // if (action.payload.length > 0) {
+      //   action.payload.map((item) => {
+      //     state.messages.push({
+      //       ...item,
+      //       ...{ sender: "BOT", ts: new Date() },
+      //     });
+      //     return false;
+      //   });
+      //   state.botTyping = false;
+      //   state.userTyping = true;
+      //   state.userTypingPlaceholder = "Your message here";
+      // }
     });
-  }
+  },
 });
 
 export const {

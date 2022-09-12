@@ -1,5 +1,7 @@
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { useScrollBottom } from "../../../hooks/useScrollBottom";
 import ThemeContext from "../../ThemeContext";
 
 const MessagesDiv = styled.div`
@@ -25,9 +27,15 @@ const MessagesDiv = styled.div`
 `;
 export const Messages = () => {
   const theme = useContext(ThemeContext);
+
   const { widgetColor } = theme;
+  const messages = useSelector((state) => state.messageState.messages);
+  const userGreeted = useSelector((state) => state.messageState.userGreeted);
+  const bottomRef = useScrollBottom(messages);
   <MessagesDiv
     className="absolute top-20 flex h-[72%] w-full flex-col space-y-1 overflow-y-auto rounded-t-2xl border-[0px]  bg-white p-2 pt-2"
     widgetColor={widgetColor}
-  ></MessagesDiv>;
+  >
+
+  </MessagesDiv>;
 };
