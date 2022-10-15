@@ -28,7 +28,7 @@ export const Keypad = () => {
   );
 
   const userTyping = useSelector((state) => state.messageState.userTyping);
-  const { widgetColor, rasaServerUrl, userId } = theme;
+  const { widgetColor, rasaServerUrl, userId, textColor } = theme;
 
   const handleSubmit = async () => {
     if (userInput.length > 0) {
@@ -48,10 +48,10 @@ export const Keypad = () => {
   };
 
   return (
-    <div className="mt-auto flex  h-[12%] items-center  rounded-t-3xl rounded-b-[2rem]  bg-slate-50">
+    <div className="mt-auto flex  h-[12%] items-center   rounded-t-3xl rounded-b-[2rem]  bg-slate-50">
       <Textarea
         rows="1"
-        className={` mx-4 block w-full  resize-none bg-slate-50 p-2.5  text-gray-900 outline-none ${
+        className={` mx-4 block w-full resize-none bg-slate-50 p-2.5 text-sm text-gray-900 outline-none ${
           userTyping ? "cursor-default" : "cursor-not-allowed"
         }`}
         placeholder={userTypingPlaceholder}
@@ -72,7 +72,7 @@ export const Keypad = () => {
         className={`${
           userInput.trim().length > 1 ? "cursor-default" : "cursor-not-allowed"
         } inline-flex justify-center rounded-full  p-2 hover:bg-slate-100 `}
-        style={{ color: widgetColor }}
+        style={{ color: textColor }}
         onClick={(e) => {
           e.preventDefault();
           handleSubmit();

@@ -9,14 +9,14 @@ export const Launcher = () => {
   const dispatch = useDispatch();
   let toggleWidget = useSelector((state) => state.widgetState.toggleWidget);
   const theme = useContext(ThemeContext);
-  const { widgetColor, botAvatar } = theme;
+  const { widgetColor, botAvatar, textColor } = theme;
   return (
     <motion.div
       animate={{
         scale: [0, 1.2, 1],
       }}
-      className={` fixed right-5 bottom-2 mr-2  inline-flex cursor-default items-center rounded-full  p-5 text-center text-sm font-medium text-white xs:right-0`}
-      style={{ backgroundColor: widgetColor }}
+      className={` fixed right-5 bottom-2 mr-2  inline-flex cursor-default items-center rounded-full  p-4 text-center text-sm font-medium text-white xs:right-0`}
+      style={{ backgroundColor: widgetColor,color: textColor}}
       onClick={(e) => {
         e.preventDefault();
         dispatch(setToggleWidget(!toggleWidget));

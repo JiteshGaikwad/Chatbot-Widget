@@ -7,13 +7,14 @@ import { formattedTs, MardownText } from "../utils";
 export const UserTextmessage = ({ messageItem }) => {
   const { text, ts } = messageItem;
   const theme = useContext(ThemeContext);
-  const { widgetPrimaryColor } = theme;
+  const { widgetPrimaryColor,textColor, widgetColor } = theme;
+  console.log(messageItem.text);
   return (
     <div className="mt-2 flex flex-row-reverse">
       <div className="flex max-w-[70%] flex-col items-end justify-end">
         <div
           className="items-end break-words rounded-t-[20px] rounded-br-[5px] rounded-bl-[20px] border-[0.5px] bg-white px-[10px] py-[6px] text-sm"
-          style={{ color: widgetPrimaryColor, borderColor: widgetPrimaryColor }}
+          style={{ color: textColor, backgroundColor:widgetColor }}
         >
           <MardownText text={text} />
         </div>

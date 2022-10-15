@@ -4,29 +4,29 @@ import ThemeContext from "../../ThemeContext";
 import { motion } from "framer-motion";
 export const Header = () => {
   const theme = useContext(ThemeContext);
-  const { widgetColor, botSubTitle, botTitle, botAvatar } = theme;
+  const { widgetColor, botSubTitle, botTitle, botAvatar, textColor } = theme;
+  console.log(textColor);
   return (
     <div
-      className="relative cursor-default flex h-24 items-center space-x-4  rounded-t-[1.8rem] rounded-b-[1.5rem] p-2 shadow-lg drop-shadow"
-      style={{ backgroundColor: widgetColor }}
+      className="relative flex h-24 cursor-default items-center space-x-4  rounded-t-[1.8rem] rounded-b-[1.5rem] p-2 shadow-lg drop-shadow"
+      style={{ backgroundColor: widgetColor, color: textColor }}
     >
-      <div className="shrink-0 border-[1px] border-white rounded-full p-2">
+      <div className="shrink-0 rounded-full border-[1px]  p-2"
+      
+      style={{borderColor:textColor }}>
         <img className="h-12 w-12" src={botAvatar} alt="Bot Logo" />
       </div>
-      <div className="w-full text-white ">
+      <div className="w-full ">
         <div className="text-xl font-medium">{botTitle}</div>
         <p className="">{botSubTitle}</p>
       </div>
       <motion.div
-      whileHover={{ scale: 1.2 }}
-      className="flex  text-white"
-      onClick={() => {
-
-      }}
-    >
-      <Bars3BottomRightIcon className=" h-7 w-7"/>
+        whileHover={{ scale: 1.2 }}
+        className="flex  "
+        onClick={() => {}}
+      >
+        <Bars3BottomRightIcon className=" h-7 w-7" />
       </motion.div>
     </div>
-  
   );
 };
