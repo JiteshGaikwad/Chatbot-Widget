@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export const Header = () => {
   const theme = useContext(ThemeContext);
   const { widgetColor, botSubTitle, botTitle, botAvatar, textColor } = theme;
-  console.log(textColor);
+
   return (
     <div
       className="relative flex h-28 cursor-default items-center space-x-4  rounded-t-[1.8rem]  p-2 shadow-lg drop-shadow"
