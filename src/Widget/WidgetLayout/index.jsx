@@ -6,13 +6,13 @@ import { Launcher } from "./Launcher";
 import { Messages } from "./Messages";
 export const WidgetLayout = () => {
   let toggleWidget = useSelector((state) => state.widgetState.toggleWidget);
-
+  // xs:bottom-0   xs:right-2 xs:h-[85%] xs:w-[95%]
   return (
     <AnimatePresence>
       {toggleWidget && (
         <motion.div
-          className="fixed bottom-5 right-5 z-50 flex h-[35rem] w-[22rem]  flex-col rounded-[2rem]   bg-white  font-inter   shadow-md xs:bottom-0   xs:right-2 xs:h-[85%] xs:w-[95%] "
-          animate={{ y: -80 }}
+          className="fixed bottom-5 right-5 z-50 flex h-[579px] w-[400px]  flex-col rounded-[1.8rem]   bg-white  font-inter   shadow-md"
+          animate={{ y: -75 }}
           exit={{ opacity: 0 }}
           transition={{ type: "spring", stiffness: 100 }}
           key="widget"

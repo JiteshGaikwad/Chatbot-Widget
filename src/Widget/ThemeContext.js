@@ -10,6 +10,7 @@ const ThemeContext = createContext({
   botSubTitle: "",
   userId:"",
   textColor:"",
+  userMsgBackgroundColor: "",
 });
 
 export default ThemeContext;

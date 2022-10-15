@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useScrollBottom } from "../../../hooks/useScrollBottom";
 import ThemeContext from "../../ThemeContext";
+import { Chats } from "./Chats";
 import { UserTextmessage } from "./UserMessage";
 
 const MessagesDiv = styled.div`
@@ -33,19 +34,14 @@ export const Messages = () => {
   const messages = useSelector((state) => state.messageState.messages);
   const userGreeted = useSelector((state) => state.messageState.userGreeted);
   const bottomRef = useScrollBottom(messages);
-  console.log(messages);
-  let tempMessages = messages.map((message, idx)=>{
-    console.log(message);
-    if(message.messageType ==='text' && message.sender==='USER'){
-      return <UserTextmessage messageItem={message} key={idx}/>
-    }
-    
-  })
 
-  return <MessagesDiv
-    className="absolute top-20 flex h-[72%] w-full flex-col space-y-1 overflow-y-auto rounded-t-2xl border-[0px]  bg-white p-2 pt-2"
-    widgetColor={widgetColor}
-  >
-    {tempMessages}
-  </MessagesDiv>;
+  return (
+    <MessagesDiv
+      className="absolute top-[17%] flex h-[72%] w-full flex-col space-y-1 overflow-y-auto rounded-t-[1.2rem] bg-white p-2 pt-2"
+      widgetColor={widgetColor}
+    >
+      <Chats messages={messages} />
+      <div ref={bottomRef}></div>
+    </MessagesDiv>
+  );
 };

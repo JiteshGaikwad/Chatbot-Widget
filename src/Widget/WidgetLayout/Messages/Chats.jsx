@@ -1,5 +1,6 @@
 import moment from "moment";
-import { UserTextmessage } from "./UserMessage/TextMessage";
+import { UserTextmessage } from "./UserMessage";
+
 export const Chats = ({ messages }) => {
   let i = 0;
   let tempMessages = [];
