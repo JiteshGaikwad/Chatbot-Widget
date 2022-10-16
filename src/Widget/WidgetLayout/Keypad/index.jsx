@@ -28,7 +28,7 @@ export const Keypad = () => {
   );
 
   const userTyping = useSelector((state) => state.messageState.userTyping);
-  const { widgetColor, rasaServerUrl, userId, textColor } = theme;
+  const {  rasaServerUrl, userId, textColor } = theme;
 
   const handleSubmit = async () => {
     if (userInput.length > 0) {

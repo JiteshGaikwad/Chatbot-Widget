@@ -37,7 +37,7 @@ export const Messages = () => {
 
   return (
     <MessagesDiv
-      className="absolute top-[17%] flex h-[72%] w-full flex-col space-y-1 overflow-y-auto rounded-t-[1.2rem] bg-white p-2 pt-2"
+      className="absolute top-[17%] flex h-[72%] w-full self-start flex-col space-y-1 overflow-y-auto rounded-t-[1.2rem] bg-white p-2 pt-2"
       widgetColor={widgetColor}
     >
       <Chats messages={messages} />

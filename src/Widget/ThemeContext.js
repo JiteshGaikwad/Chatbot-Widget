@@ -8,9 +8,14 @@ const ThemeContext = createContext({
   widgetColor: "",
   botTitle: "",
   botSubTitle: "",
-  userId:"",
-  textColor:"",
+  userId: "",
+  textColor: "",
   userMsgBackgroundColor: "",
+  botMsgBackgroundColor: "",
+  botMsgColor: "",
+  userMsgColor: "",
+  buttonsCss: {},
+  chatHeaderCss:{}
 });
 
 export default ThemeContext;

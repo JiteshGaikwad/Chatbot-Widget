@@ -4,21 +4,21 @@ import ThemeContext from "../../ThemeContext";
 import { motion } from "framer-motion";
 export const Header = () => {
   const theme = useContext(ThemeContext);
-  const { widgetColor, botSubTitle, botTitle, botAvatar, textColor } = theme;
-
+  const { botSubTitle, botTitle, botAvatar, chatHeaderCss } = theme;
+  const { textColor, backgroundColor, enableBotAvatarBorder } = chatHeaderCss;
   return (
     <div
-      className="relative flex h-28 cursor-default items-center space-x-4  rounded-t-[1.8rem]  p-2 shadow-lg drop-shadow"
-      style={{ backgroundColor: widgetColor, color: textColor }}
+      className="relative flex h-28  cursor-default items-center space-x-4  rounded-t-[1.8rem]  p-2 shadow-lg drop-shadow"
+      style={{ backgroundColor, color: textColor }}
     >
       <div
         className="shrink-0 rounded-full border-[1px]  p-2"
-        style={{ borderColor: textColor }}
+        style={{ borderColor: textColor, borderWidth:  enableBotAvatarBorder }}
       >
         <img className="h-12 w-12" src={botAvatar} alt="Bot Logo" />
       </div>
       <div className="w-full ">
-        <div className="text-xl font-medium">{botTitle}</div>
+        <div className="text-xl font-semibold antialiased">{botTitle}</div>
         <p className="">{botSubTitle}</p>
       </div>
       <motion.div

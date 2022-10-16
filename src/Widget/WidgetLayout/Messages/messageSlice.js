@@ -5,7 +5,8 @@ export const fetchBotResponse = createAsyncThunk(
   "messages/fetchBotResponse",
   async (payload, thunkAPI) => {
     const response = await getBotResponse(payload);
-    await new Promise((r) => setTimeout(r, 3000));
+    console.log(response);
+    await new Promise((r) => setTimeout(r, 1000));
     return response;
   }
 );
@@ -83,7 +84,7 @@ export const messagesSlice = createSlice({
           state.messages.push({
             src: message.image,
             sender: "BOT",
-            messageType: "text",
+            messageType: "image",
             ts: new Date(),
           });
         }
@@ -94,25 +95,13 @@ export const messagesSlice = createSlice({
             state.messages.push({
               buttons: message.buttons,
               sender: "BOT",
-              messageType: "text",
+              messageType: "buttons",
               ts: new Date(),
             });
           }
         }
       }
 
-      // if (action.payload.length > 0) {
-      //   action.payload.map((item) => {
-      //     state.messages.push({
-      //       ...item,
-      //       ...{ sender: "BOT", ts: new Date() },
-      //     });
-      //     return false;
-      //   });
-      //   state.botTyping = false;
-      //   state.userTyping = true;
-      //   state.userTypingPlaceholder = "Your message here";
-      // }
     });
   },
 });

@@ -17,7 +17,12 @@ export const Widget = (props) => {
     botSubTitle,
     userId,
     textColor,
-    userMsgBackgroundColor
+    userMsgBackgroundColor,
+    userMsgColor,
+    botMsgColor,
+    botMsgBackgroundColor,
+    buttonsCss,
+    chatHeaderCss,
   } = props;
   return (
     <Provider store={store}>
@@ -33,7 +38,12 @@ export const Widget = (props) => {
             botTitle,
             botSubTitle,
             textColor,
-            userMsgBackgroundColor
+            userMsgBackgroundColor,
+            userMsgColor,
+            botMsgColor,
+            botMsgBackgroundColor,
+            buttonsCss,
+            chatHeaderCss,
           }}
         >
           <WidgetLayout />
@@ -53,12 +63,27 @@ Widget.prototype = {
   botTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   botSubTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   textColor: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  userMsgBackgroundColor: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  userMsgBackgroundColor: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
+  botMsgBackgroundColor: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
+  botMsgColor: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  userMsgColor: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  chatHeaderTextColor: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
+  buttonsCss: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
+  chatHeaderCss: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
 };
 
 Widget.defaultProps = {
   rasaServerUrl: "http://localhost:5005/webhooks/rest/webhook",
-  userId: "testUser",
+  userId: "test_user",
   initialPayload: "/greet",
   metadata: {},
   botAvatar:
@@ -67,5 +92,25 @@ Widget.defaultProps = {
   textColor: "#4c1d95",
   userMsgBackgroundColor: "#e1d7ff",
   botTitle: "Retail Bot",
-  botSubTitle: "Sales & Services Assitant",
+  botSubTitle: "Sales & Services Assistant",
+  botMsgBackgroundColor: "#f3f4f6",
+  chatHeaderCss: {
+    textColor: "#4c1d95",
+    backgroundColor: "#a78bfa",
+    enableBotAvatarBorder: true,
+  },
+  chatHeaderTextColor: "#4c1d95",
+  botMsgColor: "#4b5563",
+  userMsgColor: "#4c1d95",
+  buttonsCss: {
+    color: "#4c1d95",
+    backgroundColor: "#e1d7ff",
+    borderColor: "#4b5563",
+    borderWidth: "0px",
+    borderRadius: "999px",
+    hoverBackgroundColor: "white",
+    hoverColor: "#4b5563",
+    hoverborderWidth: "1px",
+    enableHover: false,
+  },
 };

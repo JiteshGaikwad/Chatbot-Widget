@@ -1,4 +1,5 @@
 import moment from "moment";
+import { BotMessage } from "./BotMessage";
 import { UserTextmessage } from "./UserMessage";
 
 export const Chats = ({ messages }) => {
@@ -46,18 +47,17 @@ export const Chats = ({ messages }) => {
     if (isUser) {
       tempMessages.push(<UserTextmessage messageItem={current} key={i} />);
     } else {
-      //   tempMessages.push(
-      //     <BotMessage
-      //       messageItem={current}
-      //       key={i}
-      //       index={i}
-      //       startsSequence={startsSequence}
-      //       endsSequence={endsSequence}
-      //       socket={socket}
-      //       showTimestamp={showTimestamp}
-      //       ts={ts}
-      //     />
-      //   );
+      tempMessages.push(
+        <BotMessage
+          messageItem={current}
+          key={i}
+          index={i}
+          startsSequence={startsSequence}
+          endsSequence={endsSequence}
+          showTimestamp={showTimestamp}
+          ts={ts}
+        />
+      );
     }
     i += 1;
   }

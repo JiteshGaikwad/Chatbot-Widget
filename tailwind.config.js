@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       fontFamily: {
         lato: ["Lato", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
       },
       screens: {
         xs: { max: "600px" },
