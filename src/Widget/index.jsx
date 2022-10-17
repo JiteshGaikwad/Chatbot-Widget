@@ -23,6 +23,7 @@ export const Widget = (props) => {
     botMsgBackgroundColor,
     buttonsCss,
     chatHeaderCss,
+    errorMessages,
   } = props;
   return (
     <Provider store={store}>
@@ -44,6 +45,7 @@ export const Widget = (props) => {
             botMsgBackgroundColor,
             buttonsCss,
             chatHeaderCss,
+            errorMessages,
           }}
         >
           <WidgetLayout />
@@ -72,12 +74,14 @@ Widget.prototype = {
     PropTypes.element,
   ]),
   botMsgColor: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  botResponseDelay: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   userMsgColor: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   chatHeaderTextColor: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
   ]),
   buttonsCss: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
+  errorMessages: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   chatHeaderCss: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
 };
 
@@ -94,6 +98,7 @@ Widget.defaultProps = {
   botTitle: "Retail Bot",
   botSubTitle: "Sales & Services Assistant",
   botMsgBackgroundColor: "#f3f4f6",
+  botResponseDelay: "",
   chatHeaderCss: {
     textColor: "#4c1d95",
     backgroundColor: "#a78bfa",
@@ -113,4 +118,8 @@ Widget.defaultProps = {
     hoverborderWidth: "1px",
     enableHover: false,
   },
+  errorMessages: [
+    "I am facing some issues, please try again later",
+    "Sorry, I am unable to handle your request, please try again later",
+  ],
 };

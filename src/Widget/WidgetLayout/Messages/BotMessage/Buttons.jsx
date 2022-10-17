@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { createUserMessage } from "../../../../utils/helpers";
 import ThemeContext from "../../../ThemeContext";
+import { addMessage, disableButtons, fetchBotResponse, toggleBotTyping, toggleUserTyping } from "../messageSlice";
 import { formattedTs } from "../utils";
 
 export const Button = styled.button`
@@ -23,10 +25,10 @@ export const Button = styled.button`
   }
 `;
 
-export const Buttons = ({ buttons, index, showBotAvatar, ts }) => {
-  //   const dispatch = useDispatch();
+export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
+  const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
-  const { buttonsCss, botAvatar } = theme;
+  const { buttonsCss, botAvatar, rasaServerUrl, userId } = theme;
   return (
     <div className="flex space-x-1 ">
       <div className={`flex w-5 items-start`}>
@@ -55,7 +57,21 @@ export const Buttons = ({ buttons, index, showBotAvatar, ts }) => {
               hoverBackgroundColor={buttonsCss.hoverBackgroundColor}
               onClick={async (e) => {
                 e.preventDefault();
-
+                console.log(item);
+                if (callback) {
+                  const { title, payload } = item;
+                  dispatch(disableButtons(index));
+                  dispatch(addMessage(createUserMessage(title)));
+                  dispatch(toggleBotTyping(true));
+                  dispatch(toggleUserTyping(false))
+                  dispatch(
+                    fetchBotResponse({
+                      rasaServerUrl,
+                      message: payload,
+                      sender: userId,
+                    })
+                  );
+                }
               }}
             >
               {item.title}

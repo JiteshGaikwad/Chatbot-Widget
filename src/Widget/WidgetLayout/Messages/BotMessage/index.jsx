@@ -14,7 +14,7 @@ export const BotMessage = ({
   if (endsSequence) {
     showBotAvatar = true;
   }
-  if (messageItem.messageType === "text") {
+  if (messageItem.type === "text") {
     botResponse.push(
       <TextMessage
         startsSequence={startsSequence}
@@ -26,18 +26,20 @@ export const BotMessage = ({
       />
     );
   }
-  if (messageItem.messageType === "buttons") {
+  if (messageItem.type === "buttons") {
     botResponse.push(
       <Buttons
         buttons={messageItem.buttons}
         key={`${index}_buttons`}
         showBotAvatar={showBotAvatar}
         ts={messageItem.ts}
+        index={index}
+        callback={messageItem.callback}
       />
     );
   }
 
-  if (messageItem.messageType === "image") {
+  if (messageItem.type === "image") {
     botResponse.push(
       <Image
         showBotAvatar={showBotAvatar}

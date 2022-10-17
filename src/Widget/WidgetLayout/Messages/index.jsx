@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useScrollBottom } from "../../../hooks/useScrollBottom";
 import ThemeContext from "../../ThemeContext";
+import { BotTyping } from "./BotMessage/BotTyping";
 import { Chats } from "./Chats";
 import { UserTextmessage } from "./UserMessage";
 
@@ -41,6 +42,7 @@ export const Messages = () => {
       widgetColor={widgetColor}
     >
       <Chats messages={messages} />
+      <BotTyping />
       <div ref={bottomRef}></div>
     </MessagesDiv>
   );

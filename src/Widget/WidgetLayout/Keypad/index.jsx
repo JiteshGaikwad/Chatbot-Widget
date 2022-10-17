@@ -34,8 +34,8 @@ export const Keypad = () => {
     if (userInput.length > 0) {
       dispatch(addMessage(createUserMessage(userInput.trim())));
       setUserInput("");
-      // dispatch(toggleUserTyping(false));
-      // dispatch(toggleBotTyping(true));
+      dispatch(toggleUserTyping(false));
+      dispatch(toggleBotTyping(true));
       dispatch(
         fetchBotResponse({
           rasaServerUrl,
@@ -43,7 +43,6 @@ export const Keypad = () => {
           sender: userId,
         })
       );
-      // sendMessage(userInput.trim());
     }
   };
 

@@ -48,6 +48,10 @@ export const messagesSlice = createSlice({
     removeAllMessages: (state) => {
       state.messages = [];
     },
+    disableButtons: (state, action) => {
+      const index = action.payload;
+      state.messages[index].callback = false;
+    },
     toggleUserTyping: (state, action) => {
       state.userTyping = action.payload;
     },
@@ -66,42 +70,54 @@ export const messagesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBotResponse.fulfilled, (state, action) => {
+      state.botTyping = false;
+      state.userTyping = true;
+      state.userTypingPlaceholder = "Type your message here...";
       const messages = action.payload;
-      for (let index = 0; index < messages.length; index++) {
-        const message = messages[index];
-        // messageType: text
-        if (message?.text) {
-          state.messages.push({
-            text: message.text,
-            sender: "BOT",
-            messageType: "text",
-            ts: new Date(),
-          });
-        }
-
-           // messageType: image
-        if (message?.image) {
-          state.messages.push({
-            src: message.image,
-            sender: "BOT",
-            messageType: "image",
-            ts: new Date(),
-          });
-        }
-
-           // messageType: buttons
-        if (message?.buttons) {
-          if (message.buttons.length > 0) {
+      if (messages.length > 0) {
+        for (let index = 0; index < messages.length; index += 1) {
+          const message = messages[index];
+          // messageType: text
+          if (message?.text) {
             state.messages.push({
-              buttons: message.buttons,
+              text: message.text,
               sender: "BOT",
-              messageType: "buttons",
+              type: "text",
               ts: new Date(),
             });
           }
-        }
-      }
 
+          // messageType: image
+          if (message?.image) {
+            state.messages.push({
+              src: message.image,
+              sender: "BOT",
+              type: "image",
+              ts: new Date(),
+            });
+          }
+
+          // messageType: buttons
+          if (message?.buttons) {
+            if (message.buttons.length > 0) {
+              state.messages.push({
+                buttons: message.buttons,
+                sender: "BOT",
+                type: "buttons",
+                ts: new Date(),
+                callback: true,
+              });
+            }
+          }
+        }
+      } else {
+        state.messages.push({
+          text: 'I am facing some issues, could you please try again later 😅',
+          sender: "BOT",
+          type: "text",
+          ts: new Date(),
+        });
+      }
     });
   },
 });
@@ -114,6 +130,7 @@ export const {
   setUserTypingPlaceholder,
   setUserGreeted,
   resetMessageState,
+  disableButtons,
 } = messagesSlice.actions;
 
 export default messagesSlice.reducer;

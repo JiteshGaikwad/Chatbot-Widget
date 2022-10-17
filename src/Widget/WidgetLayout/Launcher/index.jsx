@@ -12,13 +12,11 @@ export const Launcher = () => {
   const { widgetColor, botAvatar, textColor } = theme;
   return (
     <motion.div
-      // animate={{
-      //   scale: [0, 1.1, 1],
-      // }}
-      // whileHover={{ scale: 1.2 }}
-      whileTap={{ scale: 0.9 }}
+      animate={{
+        scale: [0, 1.1, 1],
+      }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
-      className={` fixed right-5 bottom-2 mr-2  inline-flex cursor-default items-center rounded-full  p-4 text-center text-sm font-medium text-white xs:right-0`}
+      className={`fixed right-5 bottom-2 mr-2  inline-flex cursor-default items-center rounded-full  p-2 text-center text-sm font-medium text-white xs:right-0`}
       style={{ backgroundColor: widgetColor,color: textColor}}
       onClick={(e) => {
         e.preventDefault();

@@ -14,8 +14,10 @@ const ThemeContext = createContext({
   botMsgBackgroundColor: "",
   botMsgColor: "",
   userMsgColor: "",
+  botResponseDelay: "",
   buttonsCss: {},
-  chatHeaderCss:{}
+  chatHeaderCss: {},
+  errorMessages:[]
 });
 
 export default ThemeContext;

@@ -8,7 +8,7 @@ export const Header = () => {
   const { textColor, backgroundColor, enableBotAvatarBorder } = chatHeaderCss;
   return (
     <div
-      className="relative flex h-28  cursor-default items-center space-x-4  rounded-t-[1.8rem]  p-2 shadow-lg drop-shadow"
+      className="relative flex h-[20%]  cursor-default items-center space-x-4  rounded-t-[1.8rem]  p-2 shadow-lg drop-shadow"
       style={{ backgroundColor, color: textColor }}
     >
       <div
