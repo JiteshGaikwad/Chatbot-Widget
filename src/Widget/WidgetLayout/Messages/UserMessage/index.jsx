@@ -6,15 +6,15 @@ import { formattedTs, MardownText } from "../utils";
 
 export const UserTextmessage = ({ messageItem }) => {
   const { text, ts } = messageItem;
-  const theme = useContext(AppContext);
-  const {textColor,userMsgBackgroundColor } = theme;
+  const appContext = useContext(AppContext);
+  const { textColor, userMsgBackgroundColor } = appContext;
 
   return (
     <div className=" flex flex-row-reverse ">
-      <div className="flex max-w-[70%] flex-col items-end justify-end mt-4 mb-2 ">
+      <div className="mt-4 mb-2 flex max-w-[70%] flex-col items-end justify-end ">
         <div
           className="items-end break-words   rounded-t-[20px]  rounded-br-[5px] rounded-bl-[20px] border-[0.5px] bg-white px-[10px] py-[6px] text-sm "
-          style={{ color: textColor, backgroundColor:userMsgBackgroundColor }}
+          style={{ color: textColor, backgroundColor: userMsgBackgroundColor }}
         >
           <MardownText text={text} />
         </div>

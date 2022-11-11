@@ -9,7 +9,12 @@ export const createUserMessage = (message) => {
   };
 };
 
-export const getBotResponse = async ({ rasaServerUrl, sender, message }) => {
+export const getBotResponse = async ({
+  rasaServerUrl,
+  sender,
+  message,
+  metadata = {},
+}) => {
   try {
     const response = await axios({
       method: "post",
@@ -17,6 +22,7 @@ export const getBotResponse = async ({ rasaServerUrl, sender, message }) => {
       data: {
         sender,
         message,
+        metadata,
       },
     });
     return response.data;

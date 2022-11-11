@@ -8,8 +8,8 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 export const Launcher = () => {
   const dispatch = useDispatch();
   let toggleWidget = useSelector((state) => state.widgetState.toggleWidget);
-  const theme = useContext(AppContext);
-  const { widgetColor, botAvatar, textColor } = theme;
+  const appContext = useContext(AppContext);
+  const { widgetColor, botAvatar, textColor } = appContext;
   return (
     <motion.div
       animate={{

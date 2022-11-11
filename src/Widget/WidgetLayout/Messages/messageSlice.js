@@ -10,6 +10,14 @@ export const fetchBotResponse = createAsyncThunk(
     return response;
   }
 );
+
+export const resetBot = createAsyncThunk(
+  "messages/resetBot",
+  async (payload, thunkAPI) => {
+    await getBotResponse(payload);
+  }
+);
+
 const initialState = {
   messages: [],
   botTyping: false,

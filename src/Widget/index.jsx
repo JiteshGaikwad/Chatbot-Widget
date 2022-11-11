@@ -78,8 +78,4 @@ Widget.defaultProps = {
     hoverborderWidth: "1px",
     enableHover: false,
   },
-  errorMessages: [
-    "I am facing some issues, please try again later",
-    "Sorry, I am unable to handle your request, please try again later",
-  ],
 };

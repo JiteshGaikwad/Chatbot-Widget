@@ -3,8 +3,8 @@ import AppContext from "../../../AppContext";
 import { formattedTs } from "../utils";
 
 export const Image = ({ showBotAvatar, imageUrl, ts }) => {
-  const theme = useContext(AppContext);
-  const { botAvatar } = theme;
+  const appContext = useContext(AppContext);
+  const { botAvatar } = appContext;
   return (
     <div className="flex space-x-1">
       <div className={`flex w-5 items-end`}>
