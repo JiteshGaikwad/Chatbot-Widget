@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { createUserMessage } from "../../../../utils/helpers";
-import ThemeContext from "../../../ThemeContext";
+import AppContext from "../../../AppContext";
 import { addMessage, disableButtons, fetchBotResponse, toggleBotTyping, toggleUserTyping } from "../messageSlice";
 import { formattedTs } from "../utils";
 
@@ -27,7 +27,7 @@ export const Button = styled.button`
 
 export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
   const dispatch = useDispatch();
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
   const { buttonsCss, botAvatar, rasaServerUrl, userId } = theme;
   return (
     <div className="flex space-x-1 ">
@@ -57,7 +57,6 @@ export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
               hoverBackgroundColor={buttonsCss.hoverBackgroundColor}
               onClick={async (e) => {
                 e.preventDefault();
-                console.log(item);
                 if (callback) {
                   const { title, payload } = item;
                   dispatch(disableButtons(index));

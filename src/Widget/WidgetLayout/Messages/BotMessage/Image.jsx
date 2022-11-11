@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import ThemeContext from "../../../ThemeContext";
+import AppContext from "../../../AppContext";
 import { formattedTs } from "../utils";
 
 export const Image = ({ showBotAvatar, imageUrl, ts }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
   const { botAvatar } = theme;
   return (
     <div className="flex space-x-1">

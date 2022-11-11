@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ThemeContext from "../../../ThemeContext";
+import AppContext from "../../../AppContext";
 import { formattedTs, MardownText } from "../utils";
 
 export const TextMessage = ({
@@ -9,7 +9,7 @@ export const TextMessage = ({
   showBotAvatar,
   ts,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
   const { botAvatar, botMsgColor, botMsgBackgroundColor } = theme;
   const position = [
     "message",

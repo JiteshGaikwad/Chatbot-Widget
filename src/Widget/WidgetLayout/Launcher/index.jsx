@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ThemeContext from "../../ThemeContext";
+import AppContext from "../../AppContext";
 import { setToggleWidget } from "../../widgetSlice";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,7 +8,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 export const Launcher = () => {
   const dispatch = useDispatch();
   let toggleWidget = useSelector((state) => state.widgetState.toggleWidget);
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
   const { widgetColor, botAvatar, textColor } = theme;
   return (
     <motion.div

@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { createUserMessage } from "../../../utils/helpers";
-import ThemeContext from "../../ThemeContext";
+import AppContext from "../../AppContext";
 import {
   addMessage,
   fetchBotResponse,
@@ -21,7 +21,7 @@ const Textarea = styled.textarea`
 
 export const Keypad = () => {
   const dispatch = useDispatch();
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
   const [userInput, setUserInput] = useState("");
   const userTypingPlaceholder = useSelector(
     (state) => state.messageState.userTypingPlaceholder

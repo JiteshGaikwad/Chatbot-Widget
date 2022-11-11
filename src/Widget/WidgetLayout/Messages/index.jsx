@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useScrollBottom } from "../../../hooks/useScrollBottom";
-import ThemeContext from "../../ThemeContext";
+import AppContext from "../../AppContext";
 import { BotTyping } from "./BotMessage/BotTyping";
 import { Chats } from "./Chats";
 import { UserTextmessage } from "./UserMessage";
@@ -29,11 +29,10 @@ const MessagesDiv = styled.div`
 }
 `;
 export const Messages = () => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
 
   const { widgetColor } = theme;
   const messages = useSelector((state) => state.messageState.messages);
-  const userGreeted = useSelector((state) => state.messageState.userGreeted);
   const bottomRef = useScrollBottom(messages);
 
   return (

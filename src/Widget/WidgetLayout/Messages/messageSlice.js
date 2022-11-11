@@ -5,7 +5,7 @@ export const fetchBotResponse = createAsyncThunk(
   "messages/fetchBotResponse",
   async (payload, thunkAPI) => {
     const response = await getBotResponse(payload);
-    console.log(response);
+    console.log("bot response", response);
     await new Promise((r) => setTimeout(r, 1000));
     return response;
   }
@@ -112,7 +112,7 @@ export const messagesSlice = createSlice({
         }
       } else {
         state.messages.push({
-          text: 'I am facing some issues, could you please try again later 😅',
+          text: "Unfortunately, I'm having some problem 😅. I would appreciate it if you could try again later",
           sender: "BOT",
           type: "text",
           ts: new Date(),

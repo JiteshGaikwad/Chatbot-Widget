@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useSelector } from "react-redux";
-import ThemeContext from "../../../ThemeContext";
+import AppContext from "../../../AppContext";
 
 export const BotTyping = () => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
 
   const botTyping = useSelector((state) => state.messageState.botTyping);
   const { botAvatar, botMsgColor, botMsgBackgroundColor } = theme;

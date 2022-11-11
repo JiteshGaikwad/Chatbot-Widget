@@ -1,9 +1,9 @@
 import { Bars3BottomRightIcon } from "@heroicons/react/24/outline";
 import { useContext } from "react";
-import ThemeContext from "../../ThemeContext";
+import AppContext from "../../AppContext";
 import { motion } from "framer-motion";
 export const Header = () => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
   const { botSubTitle, botTitle, botAvatar, chatHeaderCss } = theme;
   const { textColor, backgroundColor, enableBotAvatarBorder } = chatHeaderCss;
   return (

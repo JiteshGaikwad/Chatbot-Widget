@@ -4,52 +4,12 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 import { WidgetLayout } from "./WidgetLayout";
-import ThemeContext from "./ThemeContext";
 
 export const Widget = (props) => {
-  const {
-    rasaServerUrl,
-    initialPayload,
-    metadata,
-    botAvatar,
-    widgetColor,
-    botTitle,
-    botSubTitle,
-    userId,
-    textColor,
-    userMsgBackgroundColor,
-    userMsgColor,
-    botMsgColor,
-    botMsgBackgroundColor,
-    buttonsCss,
-    chatHeaderCss,
-    errorMessages,
-  } = props;
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ThemeContext.Provider
-          value={{
-            rasaServerUrl,
-            userId,
-            initialPayload,
-            metadata,
-            botAvatar,
-            widgetColor,
-            botTitle,
-            botSubTitle,
-            textColor,
-            userMsgBackgroundColor,
-            userMsgColor,
-            botMsgColor,
-            botMsgBackgroundColor,
-            buttonsCss,
-            chatHeaderCss,
-            errorMessages,
-          }}
-        >
-          <WidgetLayout />
-        </ThemeContext.Provider>
+        <WidgetLayout {...props} />
       </PersistGate>
     </Provider>
   );
@@ -87,7 +47,7 @@ Widget.prototype = {
 
 Widget.defaultProps = {
   rasaServerUrl: "http://localhost:5005/webhooks/rest/webhook",
-  userId: "test_user",
+  userId: "jitesh97",
   initialPayload: "/greet",
   metadata: {},
   botAvatar:

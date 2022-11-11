@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-const ThemeContext = createContext({
+const AppContext = createContext({
   rasaServerUrl: "",
   initialPayload: "",
   metadata: {},
@@ -8,7 +8,7 @@ const ThemeContext = createContext({
   widgetColor: "",
   botTitle: "",
   botSubTitle: "",
-  userId: "",
+  userId: null,
   textColor: "",
   userMsgBackgroundColor: "",
   botMsgBackgroundColor: "",
@@ -17,7 +17,7 @@ const ThemeContext = createContext({
   botResponseDelay: "",
   buttonsCss: {},
   chatHeaderCss: {},
-  errorMessages:[]
+  errorMessages: [],
 });
 
-export default ThemeContext;
+export default AppContext;

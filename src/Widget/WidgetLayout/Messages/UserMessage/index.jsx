@@ -1,12 +1,12 @@
 import { useContext } from "react";
 
-import ThemeContext from "../../../ThemeContext";
+import AppContext from "../../../AppContext";
 
 import { formattedTs, MardownText } from "../utils";
 
 export const UserTextmessage = ({ messageItem }) => {
   const { text, ts } = messageItem;
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
   const {textColor,userMsgBackgroundColor } = theme;
 
   return (
