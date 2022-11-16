@@ -43,6 +43,7 @@ Widget.prototype = {
   buttonsCss: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
   errorMessages: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   chatHeaderCss: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
+  embedded: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 Widget.defaultProps = {
@@ -78,4 +79,5 @@ Widget.defaultProps = {
     hoverborderWidth: "1px",
     enableHover: false,
   },
+  embedded: true,
 };

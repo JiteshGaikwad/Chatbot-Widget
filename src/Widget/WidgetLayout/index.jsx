@@ -13,7 +13,8 @@ export const WidgetLayout = (props) => {
   let { toggleWidget, userId: _userId } = useSelector(
     (state) => state.widgetState
   );
-  let { userId } = props;
+  let { userId, embedded } = props;
+  console.log(embedded);
   let userIdRef = useRef(_userId);
   useEffect(() => {
     if (userId) {
@@ -25,10 +26,26 @@ export const WidgetLayout = (props) => {
         dispatch(setUserId(userIdRef.current));
       }
     }
-  }, [dispatch, props.userId, userId]);
+  }, [dispatch, embedded, props.userId, toggleWidget, userId]);
 
+  if (embedded) {
+    return (
+      <AppContext.Provider value={{ userId: userIdRef.current, ...props }}>
+        <AnimatePresence>
+          <div
+            className="fixed    flex h-full w-full  flex-col rounded-[1.8rem]   bg-white  font-lato   shadow-md"
+            key="widget"
+          >
+            <Header />
+            <Messages />
+            <Keypad />
+          </div>
+        </AnimatePresence>
+      </AppContext.Provider>
+    );
+  }
   return (
-    <AppContext.Provider value={{ userId: userIdRef.current,...props }}>
+    <AppContext.Provider value={{ userId: userIdRef.current, ...props }}>
       <AnimatePresence>
         {toggleWidget && (
           <motion.div
