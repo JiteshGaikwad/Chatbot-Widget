@@ -13,5 +13,7 @@
     ```
     rasa run actions --cors "*" --debug
     ```
+- If you're running the Rasa server on a remote server like an EC2 instance, it is necessary to modify the [constants.js](https://github.com/JiteshGaikwad/Chatbot-Widget/blob/main/static/js/constants.js#L2) and replace the localhost with the public IP address of the server.
+
 - Once you have you Rasa server up and running, you can test the bot by running the `index.html` file in the browser.
 
