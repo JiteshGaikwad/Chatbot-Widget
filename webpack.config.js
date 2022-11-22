@@ -1,7 +1,9 @@
 const path = require("path");
 // const HtmlWebPackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const {BundleAnalyzerPlugin} = require("webpack-bundle-analyzer");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+// eslint-disable-next-line no-unused-vars
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = {
   entry: ["regenerator-runtime/runtime.js", "./index.js"],
   mode: "development",
@@ -14,7 +16,7 @@ module.exports = {
   optimization: {
     minimizer: [new TerserPlugin({ extractComments: false })],
   },
-  
+
   resolve: {
     extensions: [".js", ".jsx"],
   },
@@ -36,21 +38,25 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader", "postcss-loader"],
-        
       },
       {
         test: /\.(jpg|png|gif|svg|woff|ttf|eot)$/,
         use: {
-          loader: 'url-loader'
-        }
+          loader: "url-loader",
+        },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
-      }
+      },
     ],
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Demo Page",
+      // Load a custom template (lodash by default)
+      template: "public/webpack_template.html",
+    }),
   ],
 };

@@ -80,5 +80,5 @@
     "webpack-dev-server": "^4.11.1",
     "workbox-webpack-plugin": "^6.5.4"
   },
-  "description": "My webpack project"
+  "description": "Chatbot Widget 2.0"
 }
