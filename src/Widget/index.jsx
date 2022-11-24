@@ -79,5 +79,5 @@ Widget.defaultProps = {
     hoverborderWidth: "1px",
     enableHover: false,
   },
-  embedded: true,
+  embedded: false,
 };
