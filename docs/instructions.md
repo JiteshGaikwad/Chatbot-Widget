@@ -68,3 +68,4 @@
 - Add your Rasa Server URL  to the config to `rasaServerUrl` param
 
 - Now you can open the html file in the browser and test the widget
+
