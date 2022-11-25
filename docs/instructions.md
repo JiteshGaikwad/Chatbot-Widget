@@ -14,7 +14,7 @@
     rasa run actions --cors "*" --debug
     ```
 
-- In your html file, import the `Chatbot Widget` module present inside [`dist/index.js`](../dist/index.js) as show below
+- In your html file, import the `Chatbot Widget` module present inside [`dist/index.js`](../dist/index.js) as shown below
 
 ```
   <script>
