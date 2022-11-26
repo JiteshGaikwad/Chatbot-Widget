@@ -49,7 +49,7 @@ export const WidgetLayout = (props) => {
       <AnimatePresence>
         {toggleWidget && (
           <motion.div
-            className="fixed bottom-5 right-5 z-50 flex h-[579px] w-[400px]  flex-col rounded-[1.8rem]   bg-white  font-lato   shadow-md xs:right-0 xs:h-[calc(100%-100px)] xs:w-full"
+            className="fixed bottom-5 right-5 z-50 flex h-[579px] w-[400px]  flex-col rounded-[1.8rem]  bg-white font-lato  ring-1  ring-black/5    xs:right-0 xs:h-[calc(100%-100px)] xs:w-full"
             animate={{ y: -60 }}
             exit={{ opacity: 0 }}
             transition={{ type: "spring", stiffness: 100 }}
