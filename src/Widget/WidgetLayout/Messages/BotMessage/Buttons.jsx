@@ -3,7 +3,13 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { createUserMessage } from "../../../../utils/helpers";
 import AppContext from "../../../AppContext";
-import { addMessage, disableButtons, fetchBotResponse, toggleBotTyping, toggleUserTyping } from "../messageSlice";
+import {
+  addMessage,
+  disableButtons,
+  fetchBotResponse,
+  toggleBotTyping,
+  toggleUserTyping,
+} from "../messageSlice";
 import { formattedTs } from "../utils";
 
 export const Button = styled.button`
@@ -40,7 +46,7 @@ export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
       </div>
       <div className="flex  flex-col space-y-1">
         <div
-          className={`mt-2 flex  gap-2 self-start whitespace-pre-line  break-words text-sm text-white`}
+          className={`mt-2 flex w-80 flex-wrap  gap-2 self-start whitespace-pre-line  break-words text-sm text-white`}
         >
           {buttons.map((item, idx) => (
             <Button
@@ -62,7 +68,7 @@ export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
                   dispatch(disableButtons(index));
                   dispatch(addMessage(createUserMessage(title)));
                   dispatch(toggleBotTyping(true));
-                  dispatch(toggleUserTyping(false))
+                  dispatch(toggleUserTyping(false));
                   dispatch(
                     fetchBotResponse({
                       rasaServerUrl,
