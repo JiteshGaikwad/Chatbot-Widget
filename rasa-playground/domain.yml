@@ -1,0 +1,96 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - test_buttons1
+  - test_buttons2
+  - test_buttons3
+  - test_lorem
+  - test_image
+  - test_long_link
+  - test_long_word
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_buttons1:
+  - text: "Choose a button:"
+    buttons:
+    - title: "Button 1"
+      payload: "/button1"
+    - title: "Button 2"
+      payload: "/button2"
+    - title: "Button 3"
+      payload: "/button3"
+    - title: "Button 4"
+      payload: "/button3"
+    - title: "Button 5"
+      payload: "/button3"
+
+  utter_buttons2:
+  - text: "Choose a button:"
+    buttons:
+    - title: "Button 1 AOEUNHTAOEUNTH"
+      payload: "/button1"
+    - title: "Button 2 AONTUEAHONTEUHANOTEU"
+      payload: "/button2"
+    - title: "Button 3 aOENTUANTOEU AONEUTANOTEU AONUETHAOEUNTH"
+      payload: "/button3"
+    - title: "Button 4 SUTOHUSTNHUOEUST"
+      payload: "/button3"
+    - title: "Button 5 SOEUSHTn asoetuh aoestuh asouth eosthoeu asoeuth"
+      payload: "/button3"
+
+  utter_buttons3:
+  - text: "Choose a button:"
+    buttons:
+    - title: "Lorem ipsum dolor"
+      payload: "/button1"
+    - title: "sit amet,"
+      payload: "/button2"
+    - title: "consectetur adipiscing elit, sed"
+      payload: "/button3"
+    - title: "do eiusmod tempor incididunt ut labore et dolore"
+      payload: "/button3"
+    - title: "magna aliqua."
+      payload: "/button3"
+
+  utter_lorem:
+  - text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+  utter_image:
+  - text: "Here is an image"
+    image: "https://performancek9training.com/wp-content/uploads/2022/01/Depositphotos_54247041_L.jpg"
+
+  utter_long_link:
+  - text: "Here is a long link: https://www.google.com/url?sa=i&url=https%3A%2F%2Fperformancek9training.com%2Fnew-puppy-in-the-house-heres-what-you-need-to-know%2F&psig=AOvVaw2QD4gSX9W8g523tciafUat&ust=1700571006253000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLD02ufO0oIDFQAAAAAdAAAAABAI"
+
+  utter_long_word:
+  - text: "aosentuhasonetuhsanotehusanotehusnateousnathoeusntahsoneuthasnteouhsantoheusnantoheusnathoeusnathoeusnathoeusntahoseuthasneuthasntouehsantoehusanotehusanoteuhsanotehusantoeuh"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

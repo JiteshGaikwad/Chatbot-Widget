@@ -1,0 +1,65 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: buttons 1
+  steps:
+  - intent: test_buttons1
+  - action: utter_buttons1
+
+- story: buttons 2
+  steps:
+  - intent: test_buttons2
+  - action: utter_buttons2
+
+- story: buttons 3
+  steps:
+  - intent: test_buttons3
+  - action: utter_buttons3
+
+- story: lorem
+  steps:
+  - intent: test_lorem
+  - action: utter_lorem
+
+- story: image
+  steps:
+  - intent: test_image
+  - action: utter_image
+
+- story: long link
+  steps:
+  - intent: test_long_link
+  - action: utter_long_link
+
+- story: long word
+  steps:
+  - intent: test_long_word
+  - action: utter_long_word
