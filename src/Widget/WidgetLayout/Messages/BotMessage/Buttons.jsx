@@ -1,8 +1,3 @@
-import { useContext } from "react";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { createUserMessage } from "../../../../utils/helpers";
-import AppContext from "../../../AppContext";
 import {
   addMessage,
   disableButtons,
@@ -10,7 +5,13 @@ import {
   toggleBotTyping,
   toggleUserTyping,
 } from "../messageSlice";
+
+import AppContext from "../../../AppContext";
+import { createUserMessage } from "../../../../utils/helpers";
 import { formattedTs } from "../utils";
+import styled from "styled-components";
+import { useContext } from "react";
+import { useDispatch } from "react-redux";
 
 export const Button = styled.button`
   border-radius: ${(props) => props.borderRadius};
@@ -52,7 +53,7 @@ export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
             <Button
               type="button"
               key={idx}
-              className="px-2 py-1.5  text-center text-sm font-medium "
+              className="truncate px-2 py-1.5 text-center text-sm font-medium "
               backgroundColor={buttonsCss.backgroundColor}
               color={buttonsCss.color}
               borderRadius={buttonsCss.borderRadius}
