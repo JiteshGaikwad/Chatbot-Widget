@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { MardownText, formattedTs } from "../utils";
+
 import AppContext from "../../../AppContext";
-import { formattedTs, MardownText } from "../utils";
+import { useContext } from "react";
 
 export const TextMessage = ({
   text,
@@ -46,9 +47,9 @@ export const TextMessage = ({
           alt="Bot Logo"
         />
       </div>
-      <div className="flex min-w-[10%] max-w-[80%] flex-col space-x-2">
+      <div className="flex min-w-[10%] max-w-[90%] flex-col space-x-2">
         <div
-          className={`w-fit text-sm ${borderStyle}  whitespace-pre-line  break-words px-[15px] py-[8px]`}
+          className={`w-fit text-sm ${borderStyle}  whitespace-pre-line  break-words break-all px-[15px] py-[8px]`}
           style={{ color: botMsgColor, backgroundColor: botMsgBackgroundColor }}
           dir="auto"
         >
