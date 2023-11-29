@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { getBotResponse } from "../../../utils/helpers";
 
 export const fetchBotResponse = createAsyncThunk(
@@ -82,7 +83,19 @@ export const messagesSlice = createSlice({
       state.userTyping = true;
       state.userTypingPlaceholder = "Type your message here...";
       const messages = action.payload;
-      if (messages.length > 0) {
+
+      // messageType: card
+      // NOTE: bad implementation, need to be fixed on  the backend to return a card object  instead of 2 messages
+      if (messages.length == 2 && messages[0]?.text && messages[1]?.image) {
+        console.log("card message");
+        state.messages.push({
+          text: messages[0].text,
+          src: messages[1].image,
+          sender: "BOT",
+          type: "card",
+          ts: new Date(),
+        });
+      } else if (messages.length > 0) {
         for (let index = 0; index < messages.length; index += 1) {
           const message = messages[index];
           // messageType: text

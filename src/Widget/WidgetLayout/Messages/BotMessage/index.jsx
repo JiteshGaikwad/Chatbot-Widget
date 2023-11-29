@@ -1,4 +1,5 @@
 import { Buttons } from "./Buttons";
+import { Card } from "./Card";
 import { Image } from "./Image";
 import { TextMessage } from "./TextMessage";
 
@@ -26,6 +27,7 @@ export const BotMessage = ({
       />
     );
   }
+
   if (messageItem.type === "buttons") {
     botResponse.push(
       <Buttons
@@ -35,6 +37,20 @@ export const BotMessage = ({
         ts={messageItem.ts}
         index={index}
         callback={messageItem.callback}
+      />
+    );
+  }
+
+  if (messageItem.type === "card") {
+    botResponse.push(
+      <Card
+        imageUrl={messageItem.src}
+        startsSequence={startsSequence}
+        endsSequence={endsSequence}
+        showBotAvatar={showBotAvatar}
+        text={messageItem.text}
+        key={`${index}_text`}
+        ts={messageItem.ts}
       />
     );
   }
